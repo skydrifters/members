@@ -126,18 +126,21 @@
         }
 
         $(document).ready(function () {
-            levelX = getQueryVariable("level");
+            level = getQueryVariable("level");
             pass = getQueryVariable("key");
             $.ajax({
-                url: "https://skydriftersauth.000webhostapp.com/sdauth.php?lvl=" + levelX + "&var=" + pass,
+                url: "https://skydriftersauth.000webhostapp.com/sdauth.php?lvl="+level+"&var="+pass,
                 method: "GET",
+                contentType: "text",
                 success: function (data) {
-                    if (data == "1") {
+                    if (data === "1") {
                         $("#Authlevel").append("<strong id='status'>Verified</strong>");
                         $("#Authlevel").append("<strong id='authlvl'>"+levelX+"</strong>");
                         $("#Authlevel").append("<strong id='pass'>"+pass+"</strong>");
-                    } else {
+                    } else if (data === "0") {
                         $("#Authlevel").append("Not Verified");
+                    } else {
+                        $("#Authlevel").append("Error in verification");
                     }
                 },
                 error: function (data) {
