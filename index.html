@@ -26,36 +26,10 @@
     </style>
 </head>
 <body>
-    <!--<div style="display: none;" id="Authlevel"></div>-->
-    <div id="loginmodal" class="modal modal-fixed-footer">
-		<div class="modal-content">
-			<h4>Enter member access code:</h4>
-			<div class="row">
-				<form class="col s12">
-					<div class="row">
-						<div class="input-field col s6">
-							<i class="material-icons prefix">account_circle</i>
-							<input id="icon_prefix" type="text" class="validate level">
-							<label for="icon_prefix" data-error="Wrong Format" data-success="OK">Access Level</label>
-						</div>
-						<div class="input-field col s6">
-							<i class="material-icons prefix">vpn_key</i>
-							<input id="icon_telephone" type="password" class="validate code">
-							<label for="icon_telephone" data-error="Bad Format" data-success="OK">Passcode</label>
-						</div>
-					</div>
-				</form>
-				<h5>What is this?</h5>
-				<p class="light">
-				In order to reduce information leaks and increase security you must enter the generated code available to all Sky Drifters. If you are part of a special group such as WANMED or the FSC you may find your code in another designated, private chat.
-				</p>
-			</div>
-		</div>
-        <div class="modal-footer">
-			<a href="#!" onclick="logIn()" class="modal-action modal-close green-text waves-effect waves-light btn-flat">Go</a>
-			<a href="#!" class="modal-action modal-close red-text waves-effect waves-light btn-flat">Cancel</a>
-		</div>
-	</div>
+    <div style="display: none;" id="Authlevel">
+    
+    </div>
+    
 
     <div class="nav-fixed">
     <nav class="nav-extended cyan darken-1" id="main-nav">
@@ -99,10 +73,7 @@
     <script>
         var level = "Public";
 
-        $(document).ready(function () {
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal();
-        });
+        
 
         function getQueryVariable(variable) {
             var query = window.location.search.substring(1);
@@ -154,31 +125,27 @@
 
         }
 
-        function logIn() {
-            var levelX = $(".level").val();
-            var key = $(".code").val();
-            console.log(key);
+        $(document).ready(function () {
+            levelX = getQueryVariable("level");
+            pass = getQueryVariable("key");
             $.ajax({
-                url: "https://skydriftersauth.000webhostapp.com/sdauth.php?lvl=" + level + "&var=" + key,
+                url: "https://skydriftersauth.000webhostapp.com/sdauth.php?lvl=" + levelX + "&var=" + pass,
                 method: "GET",
-                dataType: "text",
                 success: function (data) {
-                    console.log(data);
-                    if (data == 1) {
-                        console.log("Succesfully Verified");
-                        level = levelX
-                        populateAnn(level);
+                    if (data == "1") {
+                        $("#Authlevel").append("<strong id='status'>Verified</strong>");
+                        $("#Authlevel").append("<strong id='authlvl'>"+levelX+"</strong>");
+                        $("#Authlevel").append("<strong id='pass'>"+pass+"</strong>");
                     } else {
-                        console.log("Not Verified");
-                        $("#main-nav").toggleClass("cyan");
-                        $("#main-nav").toggleClass("red");
+                        $("#Authlevel").append("Not Verified");
                     }
                 },
                 error: function (data) {
-                    console.log("Error verifying." + data)
+                    console.log("Error: " + data)
                 }
-            });
-        }
+            })
+        });
+
     </script>
 </body>
 </html>
