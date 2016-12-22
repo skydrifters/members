@@ -95,7 +95,7 @@
             }
             $.ajax({
                 url: "https://skydriftersauth.000webhostapp.com/ann.php?authlevel=" + levelX,
-                contentType: "xml",
+                dataType: "xml",
                 method: "GET",
                 success: function (data) {
                     console.log(data);
@@ -131,7 +131,7 @@
             $.ajax({
                 url: "https://skydriftersauth.000webhostapp.com/sdauth.php?lvl="+level+"&var="+pass,
                 method: "GET",
-                contentType: "text",
+                dataType: "text",
                 success: function (data) {
                     if (data === "1") {
                         $("#Authlevel").append("<strong id='status'>Verified</strong>");
