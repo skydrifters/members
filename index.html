@@ -7,6 +7,23 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <style> 
+		html, body{
+			background: url("../background3.jpg") no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+        
+        .img-circle {
+            border-radius: 50%;
+            background: #00acc1;
+            padding: 5px;
+            height: 60px;
+            width:  60px;
+        }
+    </style>
 </head>
 <body>
     <!--<div style="display: none;" id="Authlevel"></div>-->
@@ -43,7 +60,7 @@
     <div class="nav-fixed">
     <nav class="nav-extended cyan darken-1" id="main-nav">
         <div class="nav-wrapper container">
-            <a href="#" id="logo-container" class="center brand-logo"><img alt="Logo" height="55" width="55" src="https://1suddo2kmul411y9l03duj9d-wpengine.netdna-ssl.com/wp-content/uploads/alliance-emblem/71539169cd0df00250f44eff3e30d6f5.svg"></a>
+            <a href="#" id="logo-container" class="center brand-logo"><img class="img-circle" alt="Logo" height="55" width="55" src="https://1suddo2kmul411y9l03duj9d-wpengine.netdna-ssl.com/wp-content/uploads/alliance-emblem/71539169cd0df00250f44eff3e30d6f5.svg"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <!--<ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="https://skydrifters.github.io/">Public Area</a></li>
@@ -59,7 +76,7 @@
             <ul class="center tabs tabs-transparent tabs-fixed-width hide-on-med-and-down">
                 <li class="tab"><a class="active" href="#ann1">Announcments</a></li>
                 <li class="tab"><a href="#alli2">Alliance Information</a></li>
-                <li class="tab disabled"><a href="#edit4">    </a></li>
+                <li class="tab disabled"><a href="#edit4"></a></li>
                 <li class="tab"><a href="#opp3">Opportunities</a></li>
                 <li class="tab"><a target="_self" href="https://skydrifters.github.io">Public Page</a></li>
                 <li class="tab disabled"><a href="#edit4">Edit</a></li>
@@ -67,12 +84,15 @@
         </div>
     </nav>
     </div>
-    <div id="ann1" class="col s12">
-
+    <div class="grey lighten-5 container">
+        <div id="ann1" class="col s12">
+            <h1>example text</h1>
+        </div>
+        <div id="alli2" class="col s12"></div>
+        <div id="opp3" class="col s12"></div>
+        <div id="edit4" class="col s12"></div>
     </div>
-    <div id="alli2" class="col s12"></div>
-    <div id="opp3" class="col s12"></div>
-    <div id="edit4" class="col s12"></div>
+    
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
