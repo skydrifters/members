@@ -141,15 +141,16 @@
                         var titleX = $(this).find("title").text();
                         if (titleX === title) {
                             content = $(this).find("content").html();
+                                        $("#more-title").text(title);
+                                        $("#more-content").empty();
+                                        $("#more-content").append(content);
+                                        $("#modal1").modal("open");
+                                        event.preventDefault();
                         }
                     });
                 }
             });
-            $("#more-title").text(title);
-            $("#more-content").empty();
-            $("#more-content").append(content);
-            $("#modal1").modal("open");
-            event.preventDefault();
+
         }
 
         function populateInfo(level) {
