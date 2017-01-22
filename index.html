@@ -139,13 +139,10 @@
                     console.log(data);
                     $(data).find("item").each(function () {
                         var titleX = $(this).find("title").text();
-                        if (titleX == title) {
+                        if (titleX === title) {
                             content = $(this).find("content").html();
                         }
                     });
-                },
-                error: function (data) {
-                    console.log("Erorr in morecontent");
                 }
             });
             $("#more-title").text(title);
