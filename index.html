@@ -168,7 +168,8 @@
         }
 
         $(document).ready(function () {
-            $('.modal-trigger').modal();
+            $('.modal-trigger').leanModal();
+            $('.modal').modal();
             level = getQueryVariable("level");
             pass = getQueryVariable("key");
             $.ajax({
