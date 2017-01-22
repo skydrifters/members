@@ -85,7 +85,9 @@
             return (false);
         }
 
-        function populateAnn(level) {
+        function populateAnn() {
+			level = $("#authlvl").text();
+			pass = $("#pass").text();
             if (level == "Allied Member") {
                 levelX = "public";
             } else if (level == "Chief" || level == "Command" || level == "Moderator" || level == "Member") {
@@ -104,7 +106,7 @@
                         var author = $(this).find("author").text();
                         var title = $(this).find("title").text();
                         var content = $(this).find("content").html();
-                        $("#ann1").append("<h1>Data got sucessfully");
+                        $("#ann1").append("<h1>Data got sucessfully</h1>");
                     });
                 },
                 error: function (data) {
@@ -137,6 +139,7 @@
                         $("#Authlevel").append("<strong id='status'>Verified</strong>");
                         $("#Authlevel").append("<strong id='authlvl'>"+level+"</strong>");
                         $("#Authlevel").append("<strong id='pass'>"+pass+"</strong>");
+						populateAnn()
                     } else if (data == 0) {
                         $("#Authlevel").append("Not Verified");
                     } else {
