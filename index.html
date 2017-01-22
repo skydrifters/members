@@ -30,6 +30,17 @@
     
     </div>
     
+      <!-- MORE MODAL -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4 id="more-title"></h4>
+      <p id="more-content"></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+  </div>
+          
 
     <div class="nav-fixed">
     <nav class="nav-extended cyan darken-1" id="main-nav">
@@ -59,7 +70,7 @@
     </nav>
     </div>
     <div class="container">
-        <div id="ann1" class="col s12">
+        <div id="ann1" class="col s12" style="padding-top: 50px">
         </div>
         <div id="alli2" class="col s12"></div>
         <div id="opp3" class="col s12"></div>
@@ -97,15 +108,16 @@
                         var author = $(this).find("author").text();
                         var title = $(this).find("title").text();
                         var content = $(this).find("content").html();
+                        content = content.substr(0, 50) + "\u2026";
                         $("#ann1").append("<div class='row'>\
           <div class='col s12 m6'>\
             <div class='card blue-grey darken-1'>\
               <div class='card-content white-text'>\
-                <span class='card-title'>" + title + "</span>\
+                <span class='card-title'>" + title + " by "+author+"</span>\
                 <p>" + content + "</p>\
               </div>\
               <div class='card-action'>\
-                <a href='#'>Written by " + author + " for " + auth + " level.</a>\
+                <a class='modal-trigger waves-effect waves-light btn' onclick='$(\"#more-title\").text(\""+title+"\"); $(\"#more-content\").empty(); $(\"#more-content\").append(\""+content+"\")' href='#modal1'>Modal</a>\
               </div>\
             </div>\
           </div>\
