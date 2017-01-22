@@ -152,7 +152,7 @@
             $("#more-content").empty();
             $("#more-content").append(content);
             $("#modal1").modal("open");
-            e.preventDefault();
+            event.preventDefault();
         }
 
         function populateInfo(level) {
@@ -168,7 +168,6 @@
         }
 
         $(document).ready(function () {
-            $('.modal-trigger').leanModal();
             $('.modal').modal();
             level = getQueryVariable("level");
             pass = getQueryVariable("key");
