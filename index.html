@@ -23,6 +23,10 @@
             height: 60px;
             width:  60px;
         }
+        
+        ul#staggered-info li {
+            opacity: 0; 
+        }
     </style>
 </head>
 <body>
@@ -46,35 +50,13 @@
     <nav class="nav-extended cyan darken-1" id="main-nav">
         <div class="nav-wrapper container">
             <a href="#" id="logo-container" class="center brand-logo"><img class="img-circle" alt="Logo" height="55" width="55" src="https://1suddo2kmul411y9l03duj9d-wpengine.netdna-ssl.com/wp-content/uploads/alliance-emblem/71539169cd0df00250f44eff3e30d6f5.svg"></a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <!--<ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="https://skydrifters.github.io/">Public Area</a></li>
-            </ul>-->
-            <ul class="side-nav" id="mobile-demo">
-                <li><a class="navtab" href="#ann1">Announcments</a></li>
-                <li><a class="navtab" href="#alli2">Alliance Information</a></li>
-                <li><a class="navtab" href="#opp3">Opportunities</a></li>
-                <li><a class="navtab" href="https://skydrifters.github.io">Public Page</a></li>
-                <li><a class="navtab" href="#edit4">Edit</a></li>
-            </ul>
-
-            <ul class="center tabs tabs-transparent tabs-fixed-width hide-on-med-and-down">
-                <li class="tab"><a class="active" href="#ann1">Announcments</a></li>
-                <li class="tab"><a href="#alli2">Alliance Information</a></li>
-                <li class="tab disabled"><a href="#edit4"></a></li>
-                <li class="tab"><a href="#opp3">Opportunities</a></li>
-                <li class="tab"><a target="_self" href="https://skydrifters.github.io">Public Page</a></li>
-                <li class="tab disabled"><a href="#edit4">Edit</a></li>
-            </ul>
         </div>
     </nav>
     </div>
     <div class="container">
-        <div id="ann1" class="col s12" style="padding-top: 50px">
+        <div id="alli2" class="col s8" style="padding-top: 50px">
         </div>
-        <div id="alli2" class="col s12"></div>
-        <div id="opp3" class="col s12"></div>
-        <div id="edit4" class="col s12"></div>
+        <div id="ann1" class="col s4" style="padding-top: 50px"></div>
     </div>
     
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -108,7 +90,7 @@
                         var author = $(this).find("author").text();
                         var title = $(this).find("title").text();
                         var content = $(this).find("content").html();
-                        content = content.substr(0, 50) + "\u2026";
+                        content = content.substr(0, 150) + "\u2026";
                         $("#ann1").append("<div class='row'>\
           <div class='col s12 m6'>\
             <div class='card blue-grey darken-1'>\
@@ -154,7 +136,29 @@
         }
 
         function populateInfo(level) {
-
+            $("#alli2").append('<ul id="staggered-info" class="collapsible popout" data-collapsible="accordion">\
+    <li>\
+      <div class="collapsible-header"><i class="material-icons">subject</i>Basic Code Of Conduct</div>\
+      <div class="collapsible-body white"><p>1. Communicating with other factions is perfectly fine as long as it is positive and does not cause drama/conflict with the faction in question. If there are reports of Drifters causing issue there will be extremely severe consequences capisce?\
+      \
+2. I really don’t like this rule but it’s here for a reason, Activity is key to staying in the Drifters; I get there isn’t always much to post about on the forums but there is always the Discord server to get involved with. I’m not asking much just really don’t want people joining and never contributing anything. I am known to purge members every now and then\
+        \
+3. Individuality is key for the Sky Drifters and as such I would like you all to make yourself known in the Mingle Thread and more importantly the Discord Channel!; each of you stating that you have read the rules, who you are, what you intend to do as a Drifter and why you joined. Don’t forget to mention where you are based, eg: UK, US, ect. To continue from this point, do try and have a Profile Avatar as it just looks prettier 😛\
+        \
+4. Even though we do encourage you to attend Social Nights [SNs] you do not have to if you do not wish too and there will be no consequence for not turning up. We all have lives 😀</p>\
+    </li>\
+    <li>\
+      <div class="collapsible-header"><i class="material-icons"></i>Community</div>\
+      <div class="collapsible-body white"><p>Lorem ipsum dolor sit amet.</p></div>\
+    </li>\
+    <li>\
+      <div class="collapsible-header"><i class="material-icons">verified_user</i>Scurity</div>\
+      <div class="collapsible-body white"><p>Lorem ipsum dolor sit amet.</p></div>\
+    </li>\
+  </ul>'); 
+  $('.collapsible').collapsible();
+  Materialize.showStaggeredList('#staggered-info')
+            
         }
 
         function populateOpp(level) {
@@ -167,6 +171,7 @@
 
         $(document).ready(function () {
             $('.modal').modal();
+            
             level = getQueryVariable("level");
             pass = getQueryVariable("key");
             $.ajax({
