@@ -80,7 +80,7 @@
             level = $("#authlvl").text();
             pass = $("#pass").text();
             levelX = "private";
-            if(pass == "Chief" || pass == "Mod") {
+            if(level == "Chief" || level == "Mod") {
                 $("#ann1").prepend("\
                 <div class='make-announcement card blue-grey darken-1'>\
                         <form action='https://skydriftersauth.000webhostapp.com/ann.php?authlevel=private' method='post'>\
@@ -94,7 +94,7 @@
                 </div>\
                 ")
             } else {
-                console.log("No, "+pass)
+                console.log("No, "+level)
             }
             $.ajax({
                 url: "https://skydriftersauth.000webhostapp.com/ann.php?authlevel=" + levelX,
