@@ -80,6 +80,20 @@
             level = $("#authlvl").text();
             pass = $("#pass").text();
             levelX = "private";
+            if(pass == "Chief" || pass == "Mod") {
+                $("#ann1").prepend("\
+                <div class='make-announcement card blue-grey darken-1'>\
+                        <form action='https://skydriftersauth.000webhostapp.com/ann.php?authlevel=private' method='post'>\
+                            <div clas='card-content white-text'>\
+                                    some form to make anouncements here\
+                            </div>\
+                            <div class='card-action'>\
+                            \
+                            </div>\
+                        </form>\
+                </div>\
+                ")
+            }
             $.ajax({
                 url: "https://skydriftersauth.000webhostapp.com/ann.php?authlevel=" + levelX,
                 dataType: "xml",
@@ -182,10 +196,13 @@
                         $("#Authlevel").append("<strong id='authlvl'>" + level + "</strong>");
                         $("#Authlevel").append("<strong id='pass'>" + pass + "</strong>");
                         populateAnn()
+                        populateInfo()
                     } else if (data == 0) {
                         $("#Authlevel").append("Not Verified");
+                        alert("Dreadfully sorry but the code you entered was incorrect. Perhaps you want to go back?")
                     } else {
                         $("#Authlevel").append("Error in verification");
+                        alert("We had an error in verifying your code. Can you please go back and try again. Thank You")
                     }
                 },
                 error: function (data) {
